@@ -1,0 +1,13 @@
+{% extends 'filmy_layout.html' %}
+
+{% block filmy_content %}
+
+<h1>Seznam filmů</h1>
+
+<ul>
+  {% for slug, film in FILMY.items %}
+    <li><a href="/filmy-seznam/{{ slug }}">{{ film.nazev }}</a></li>
+  {% endfor %}
+</ul>
+
+{% endblock %}

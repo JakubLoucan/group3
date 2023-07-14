@@ -1,0 +1,29 @@
+<!DOCTYPE html>{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <link rel="stylesheet" href="{% static 'filmy/style3.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<main class="container">
+    <nav>
+        <ul>
+            <li>
+                <a href="{% url 'filmy:seznam_hercu' %}">zpět na seznam herců</a>
+            </li>
+        </ul>
+    </nav>
+
+    <img src="https://picsum.photos/200/200/">
+
+    <h1>{{ herec.jmeno }}</h1>
+    <p>{{ herec.popis }}</p>
+
+</main>
+
+</body>
+</html>

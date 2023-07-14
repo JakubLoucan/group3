@@ -1,0 +1,27 @@
+<!DOCTYPE html>{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <link rel="stylesheet" href="{% static 'filmy/style4.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<main class="container">
+    <h1>Seznam herců</h1>
+
+    <ul>
+        {% for slug, data in herci_data.items %}
+        <li>
+            <a href="{% url 'filmy:detail_herce' slug=slug %}">{{ data.jmeno }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+
+</main>
+
+
+</body>
+</html>

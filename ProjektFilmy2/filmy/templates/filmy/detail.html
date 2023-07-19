@@ -22,6 +22,14 @@
 
     <h1>{{ film.nazev }}</h1>
     <p>{{ film.popis }}</p>
+
+     <ul>
+        {% for slug, jmeno  in film.herci.items %}
+            <li>
+                <a href="{% url 'filmy:detail_herce' slug=slug %}">{{ jmeno }}</a>
+            </li>
+        {% endfor %}
+    </ul>
 </main>
 
 </body>

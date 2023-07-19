@@ -2,10 +2,21 @@ filmy_data = {
     'vykoupeni-z-veznice-shawshank': {
         'nazev': 'Vykoupení z věznice Shawshank',
         'popis': 'Mladý bankéř Andy Dufresne (Tim Robbins) je v roce 1947 odsouzen za vraždu své ženy a jejího milence. Přesto, že tento čin popírá, čeká na něj dvojnásobný doživotní trest v obávané věznici Shawshank.',
+        'herci':{
+            'johnny-deep': 'Johnny Deep',
+            'robert-de-niro': 'Robert de Niro',
+            'jack-nicolson': 'Jack Nicolson',
+        }
+
+
     },
     'forrest-gump': {
         'nazev': 'Forrest Gump',
         'popis': 'Poněkud prostoduchý Forrest Gump, vyzbrojen užitečnými radami své matky, se vydává na pouť životem, který mu připraví nejedno překvapení.',
+        'herci': {
+            'kate-winslet': 'Kate Winslet',
+            'natalie-portman': 'Natalie Portman',
+        }
     },
     'zelena-mile': {
         'nazev': 'Zelená míle',

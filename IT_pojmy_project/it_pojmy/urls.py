@@ -1,10 +1,20 @@
 from django.urls import path
 from it_pojmy import views
 
+app_name = 'it_pojmy'
 
 urlpatterns = [
-    path('', views.index),
-    path('seznam/',views.seznam),
-    path('detail/<slug:zkratka>/', views.detail),
-    path('load-data/', views.load_data),
+    path('', views.index, name='index'),
+    path('seznam/', views.seznam, name='seznam'),
+
+    # /detail/hardware/
+    # /detail/software/
+    # /detail/python/
+    path('detail/<slug:zkratka>/', views.detail, name='detail'),
+
+    path('clanky/', views.seznam_clanku, name='seznam_clanku'),
+    path('clanky2/', views.ClanekList.as_view(), name='ClanekList'),
+    path('clanky/<slug:slug_url>/', views.detail_clanku, name='detail_clanku'),
+
+    path('load-data/', views.load_data2),
 ]

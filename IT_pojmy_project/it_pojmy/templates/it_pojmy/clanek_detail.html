@@ -1,0 +1,7 @@
+{% extends 'it_pojmy/layout.html' %}
+
+{% block main_content %}
+  <h1>{% block title %}{{ clanek.nazev }}{% endblock %}</h1>
+  <p>{{ clanek.kategorie }}</p>
+  <p>{{ clanek.popis }}</p>
+{% endblock %}

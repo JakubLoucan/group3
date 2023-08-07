@@ -1,6 +1,8 @@
 from django.http import HttpResponse
-from django.shortcuts import render
-from it_pojmy.models import ItPojem, Clanek, Kategorie, Komentar
+from django.shortcuts import render, redirect, reverse
+from django.views.generic import ListView, CreateView
+from it_pojmy.models import ItPojem, Clanek, Komentar
+from it_pojmy.forms import ClanekForm
 
 
 def index(request):
@@ -27,18 +29,10 @@ def seznam_clanku(request):
     )
 
 
-from django.views.generic import ListView
-
-
 class ClanekList(ListView):
     model = Clanek
     context_object_name = 'clanky'
     paginate_by = 24
-
-
-# clanky = Clanek.objects.all()
-# clanky = Clanek.objects.filter(slug='ahoj')
-# clanek = Clanek.objects.get(slug='ahoj', id=2)
 
 
 def detail_clanku(request, slug_url):
@@ -51,11 +45,30 @@ def detail_clanku(request, slug_url):
         context={'clanek': clanek}
     )
 
-def load_data2(request):
-    for i in range(1000):
-        Clanek.objects.update_or_create(
-            slug = f'test-clanek-{i}',
-            defaults = {'nazev': f'Test článek{i}'},
-        )
-        print(i)
-    return HttpResponse('Data loaded')
+
+def novy_komentar(request):
+    # info: z post dat získáme požadované informace
+    clanek_id = request.POST['clanek_id']
+    autor = request.POST['autor']
+    obsah = request.POST['obsah']
+
+    # info: podle těchto dat vytvoříme komentář
+    Komentar.objects.create(
+        autor=autor,
+        obsah=obsah,
+        clanek_id=clanek_id,
+    )
+
+    # info: najdeme článek, abychom ně něj mohli udělat redirect
+    clanek = Clanek.objects.get(id=clanek_id)
+
+    return redirect(
+        reverse('it_pojmy:detail_clanku', kwargs={'slug_url': clanek.slug})
+    )
+
+
+# info: zde náš formulář napojíme na View, to view dokáže formulář jak vykreslit tak zpracovat
+# info: stačí pak jen definovat template a url cestu, na které formulář bude
+class ClanekCreateView(CreateView):
+    form_class = ClanekForm
+    template_name = 'it_pojmy/clanek_form.html'

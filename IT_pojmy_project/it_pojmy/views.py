@@ -5,6 +5,10 @@ from it_pojmy.models import ItPojem, Clanek, Komentar
 from it_pojmy.forms import ClanekForm
 
 
+def home(request):
+    return render(request, 'it_pojmy/home.html')
+
+
 def index(request):
     return render(request, 'it_pojmy/index.html')
 

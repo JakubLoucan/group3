@@ -4,7 +4,7 @@ from it_pojmy import views
 app_name = 'it_pojmy'
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', views.home, name='home'),
     path('seznam/', views.seznam, name='seznam'),
 
     # /detail/hardware/

@@ -13,7 +13,43 @@
 <section class="section">
     <div class="container">
         <div class="columns">
-            <div class="column is-narrow">Boční panel</div>
+            <div class="column is-narrow"><!-- Boční panel -->
+
+                <aside class="menu">
+                    <p class="menu-label">Kategorie</p>
+
+                    <ul class="menu-list">
+                        {% for KAT in KATEGORIE %}
+                            {% if not KAT.nadkategorie %}
+                                <li>
+                                    <a {% if KAT == kategorie %}class="is-active"{% endif %} href="{{ KAT.get_absolute_url }}">{{ KAT.nazev }}</a>
+                                    <ul>
+                                        {% for PODKAT in KAT.podkategorie.all %}
+                                            <li><a {% if PODKAT == kategorie %}class="is-active"{% endif %} href="{{ PODKAT.get_absolute_url }}">{{ PODKAT.nazev }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+
+                    <p class="menu-label">Znacky</p>
+
+                    <ul class="menu-list">
+
+                            <li>
+                                <ul>
+                                    {% for znacka in ZNACKA %}
+                                        <li><a  href="{{ ZNACKA.get_absolute_url }}">{{ znacka.nazev }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+
+
+                    </ul>
+                </aside>
+
+            </div><!-- END Boční panel -->
             <div class="column">
                 {% block eshop_content %}
                 {% endblock %}

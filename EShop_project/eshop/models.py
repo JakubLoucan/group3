@@ -38,10 +38,6 @@ class Znacka(SlugNazevModel):
     def get_absolute_url(self):
         return reverse('eshop:znacka_detail', kwargs={'slug': self.slug})
 
-    def __str__(self):
-        return self.nazev
-
-
 
 class Produkt(SlugNazevModel):
     popis = models.TextField(max_length=1000, blank=True)

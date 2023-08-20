@@ -17,7 +17,6 @@
 
                 <aside class="menu">
                     <p class="menu-label">Kategorie</p>
-
                     <ul class="menu-list">
                         {% for KAT in KATEGORIE %}
                             {% if not KAT.nadkategorie %}
@@ -33,19 +32,11 @@
                         {% endfor %}
                     </ul>
 
-                    <p class="menu-label">Znacky</p>
-
+                    <p class="menu-label">Značky</p>
                     <ul class="menu-list">
-
-                            <li>
-                                <ul>
-                                    {% for znacka in ZNACKA %}
-                                        <li><a  href="{{ ZNACKA.get_absolute_url }}">{{ znacka.nazev }}</a></li>
-                                    {% endfor %}
-                                </ul>
-                            </li>
-
-
+                        {% for ZNACKA in ZNACKY %}
+                            <li><a {% if ZNACKA == znacka %}class="is-active"{% endif %} href="{{ ZNACKA.get_absolute_url }}">{{ ZNACKA.nazev }}</a></li>
+                        {% endfor %}
                     </ul>
                 </aside>
 

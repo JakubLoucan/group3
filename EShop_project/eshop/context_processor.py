@@ -1,17 +1,13 @@
-from eshop.models import Kategorie
-from eshop.models import Znacka
+from eshop.models import Kategorie, Znacka
+
 
 
 def kategorie_context(request):
     kategorie = Kategorie.objects.select_related('nadkategorie')
+    znacky = Znacka.objects.all()
 
     return {
         'KATEGORIE': kategorie,
+        'ZNACKY': znacky,
     }
 
-def znacka_context(request):
-    znacka = Znacka.objects.all()
-
-    return {
-        'ZNACKA': znacka,
-    }

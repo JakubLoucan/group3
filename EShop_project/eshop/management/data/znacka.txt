@@ -5,7 +5,7 @@ LG
 Panasonic
 Microsoft
 Dell
-HP
+HP(Hewlett Packard)
 Lenovo
 Asus
 Acer

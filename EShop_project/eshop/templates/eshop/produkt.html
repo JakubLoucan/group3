@@ -1,5 +1,29 @@
 {% extends 'eshop/_layout.html' %}
 
 {% block eshop_content %}
-    <h1 class="title">PRODUKT</h1>
+
+    <style>
+        .columns > img {
+            border-radius: 1.2rem;
+        }
+        .columns > div {
+            border-radius: 1.2rem;
+        }
+    </style>
+    <div class="columns">
+        <img src="https://picsum.photos/300/400/" alt="">
+        <div class="column" style = "margin-left:5px; background: lightblue">
+            <h1 class="title">{{ produkt.nazev}}</h1>
+
+
+            <p>{{ produkt.popis }}</p>
+            <p>Cena: {{ produkt.aktualni_cena }}</p>
+            <p>Znacka: {{ produkt.znacka.nazev }}</p>
+            <p>Množství: {{ produkt.mnozstvi }}</p>
+            <p>Kategorie: {{ produkt.kategorie }}</p>
+
+        </div>
+
+    </div>
+
 {% endblock %}

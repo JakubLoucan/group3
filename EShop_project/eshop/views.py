@@ -1,17 +1,10 @@
 from django.shortcuts import render
-from eshop.models import Kategorie, Znacka
+from eshop.models import Kategorie, Produkt, Znacka
 
 
 def index(request):
     kategorie = Kategorie.objects.all()
     return render(request, 'eshop/index.html', context={'kategorie': kategorie})
-
-# todo: předjmenovat views
-"""
-kategorie -> kategorie_list
-znacka -> znacka_detail
-produtk -> produkt_detail
-"""
 
 
 def kategorie_list(request):
@@ -25,9 +18,16 @@ def kategorie_detail(request, slug):
 
 
 def znacka_detail(request, slug):
-    detail = Znacka.objects.all(slug=slug)
-    return render(request, 'eshop/znacka.html', context={'detail': detail})
+    znacka = Znacka.objects.get(slug=slug)
+    produkty = Produkt.objects.filter(znacka=znacka)
+    return render(request, 'eshop/znacka.html', context={'znacka': znacka, 'produkty': produkty})
 
 
 def produkt_detail(request, slug, pk):
-    return render(request, 'eshop/produkt.html')
+    produkt = Produkt.objects.get(slug=slug, pk=pk)
+    return render(request, 'eshop/produkt.html', context={'produkt': produkt})
+
+
+def produkt_list(request):
+    object_list = Produkt.objects.all()
+    return render(request, 'eshop/produkt_list.html', context={'object_list': object_list})

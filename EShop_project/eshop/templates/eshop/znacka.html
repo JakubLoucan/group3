@@ -1,5 +1,10 @@
-{% extend 'eshop/_layout.html' %}
+{% extends 'eshop/_layout.html' %}
 
 {% block eshop_content %}
-    <h1 class="title">ZNACKA</h1>
+    <h1 class="title">{{ znacka.nazev }}</h1>
+
+    {% for produkt in produkty %}
+        <div>{{ produkt.nazev }}</div>
+    {% endfor %}
+
 {% endblock %}

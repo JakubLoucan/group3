@@ -1,0 +1,28 @@
+ <style>
+        .column a img {
+            transition: scale 0.2s;
+            border-radius: .8rem;
+        }
+
+        .column a img:hover {
+            opacity: 0.85;
+            scale: 1.05;
+        }
+    </style>
+
+    <div class="columns is-multiline">
+        {% for produkt in object_list %}
+            <div class="column is-4">
+                <a href="{{ produkt.get_absolute_url }}">
+                    {% if produkt.obrazek %}
+                        <img src="{{ produkt.obrazek.url }}" alt="{{ produkt.nazev }}">
+                    {% else %}
+                        <img src="https://placehold.co/600x400?text=No+Image" alt="No Image">
+                    {% endif %}
+
+                <div>{{ produkt.nazev }}</div>
+
+                </a>
+            </div>
+        {% endfor %}
+    </div>

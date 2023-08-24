@@ -15,8 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
+from django.conf import settings
 
-urlpatterns = [
+MEDIA_PATHS = static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns = MEDIA_PATHS + [
     path('admin/', admin.site.urls), # -> /admin/...
     path('__debug__/', include('debug_toolbar.urls')),
     path('', include('eshop.urls', namespace='eshop')), # /...

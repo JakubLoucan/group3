@@ -12,7 +12,15 @@
         }
     </style>
     <div class="columns is-multiline">
-        <div><img src="https://picsum.photos/320/300/" alt=""></div>
+        <div>
+            {% if produkt.obrazek %}
+                <img src="{{ produkt.obrazek.url }}" alt="{{ produkt.nazev }}, height: 200px; width: 300px">
+            {% else %}
+                <img src="https://placehold.co/600x400?text=No+Image" alt="No Image">
+            {% endif %}
+
+        </div>
+        
         <div class="column" style = "margin-left:5px; background: lightblue; max-width: 320px;">
             <h1 class="title">{{ produkt.nazev}}</h1>
 

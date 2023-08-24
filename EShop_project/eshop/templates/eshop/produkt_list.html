@@ -3,27 +3,6 @@
 {% block eshop_content %}
     <h1 class="title">PRODUKT LIST</h1>
 
-    <style>
-        .column a img {
-            transition: scale 0.2s;
-            border-radius: .8rem;
-        }
-
-        .column a img:hover {
-            opacity: 0.85;
-            scale: 1.05;
-        }
-    </style>
-
-    <div class="columns is-multiline">
-        {% for produkt in object_list %}
-            <div class="column is-4">
-                <a href="{{ produkt.get_absolute_url }}">
-                    <img src="https://picsum.photos/300/200?{{ forloop.counter }}" alt="">
-                    <div>{{ produkt.nazev }}</div>
-                </a>
-            </div>
-        {% endfor %}
-    </div>
+    {% include 'eshop/include/produkt_object_list.html' %}
 
 {% endblock %}

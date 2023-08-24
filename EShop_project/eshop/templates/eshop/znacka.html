@@ -3,8 +3,28 @@
 {% block eshop_content %}
     <h1 class="title">{{ znacka.nazev }}</h1>
 
-    {% for produkt in produkty %}
-        <div>{{ produkt.nazev }}</div>
-    {% endfor %}
+    <style>
+        img.logo {
+            object-fit: cover;
+        }
+    </style>
+
+    <div class="columns">
+        <div class="column is-3">
+            {% if znacka.logo %}
+            <figure class="image is-1by1">
+                <img class="is-rounded logo" src="{{ znacka.logo.url }}" alt="Logo {{ znacka.nazev }}">
+            </figure>
+            {% endif %}
+        </div>
+    </div>
+
+
+
+
+
+
+    {% include 'eshop/include/produkt_object_list.html' with object_list=produkty only %}
+
 
 {% endblock %}

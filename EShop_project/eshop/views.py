@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.db.models import Q
 from eshop.models import Kategorie, Produkt, Znacka
 
 
@@ -14,7 +15,10 @@ def kategorie_list(request):
 
 def kategorie_detail(request, slug):
     kategorie = Kategorie.objects.get(slug=slug)
-    return render(request, 'eshop/kategorie_detail.html', context={'kategorie': kategorie})
+    podminka = Q(kategorie=kategorie) | Q(kategorie__nadkategorie=kategorie)
+    produkty = Produkt.objects.filter(podminka)
+    context = {'kategorie': kategorie, 'produkty': produkty}
+    return render(request, 'eshop/kategorie_detail.html', context=context)
 
 
 def znacka_detail(request, slug):

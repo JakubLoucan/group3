@@ -33,7 +33,7 @@ class Kategorie(SlugNazevModel):
 
 
 class Znacka(SlugNazevModel):
-    logo = models.ImageField(blank=True)
+    logo = models.ImageField(blank=True, upload_to='%Y/%m/%d')
 
     def get_absolute_url(self):
         return reverse('eshop:znacka_detail', kwargs={'slug': self.slug})
@@ -56,6 +56,7 @@ class Produkt(SlugNazevModel):
     kategorie = models.ManyToManyField(Kategorie, blank=True)
     mnozstvi = models.PositiveIntegerField(default=0)
     vlastnosti = models.JSONField(default=dict, blank=True)
+    obrazek = models.ImageField(blank=True, upload_to='products/%Y/%m/%d')
 
     def get_absolute_url(self):
         return reverse('eshop:produkt_detail', kwargs={'slug': self.slug, 'pk': self.pk})

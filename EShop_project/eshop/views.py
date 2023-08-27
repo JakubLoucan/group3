@@ -35,3 +35,6 @@ def produkt_detail(request, slug, pk):
 def produkt_list(request):
     object_list = Produkt.objects.all()
     return render(request, 'eshop/produkt_list.html', context={'object_list': object_list})
+
+def profile(request):
+    return render(request, 'eshop/profile.html')

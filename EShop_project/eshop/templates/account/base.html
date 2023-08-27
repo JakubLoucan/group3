@@ -1,0 +1,28 @@
+{% extends 'eshop/_layout.html' %}
+
+{% block eshop_content %}
+
+  <style>
+    h1 {
+      font-size: 2em;
+      color: red;
+    }
+    .accounts p {
+      display: flex;
+      justify-content: space-between;
+      margin: 1em;
+    }
+
+    .accounts input{
+      font-size: 1.1em;
+      border-radius: .2em;
+    }
+
+  </style>
+
+  <div class="accounts">
+    {% block content %}
+    {% endblock %}
+  </div>
+
+{% endblock %}

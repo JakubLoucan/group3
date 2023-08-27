@@ -1,0 +1,15 @@
+{% extends 'eshop/_layout.html' %}
+
+{% block eshop_content %}
+     <h1 class="title">Profile</h1>
+     <p>{{ user }}</p>
+
+     <br>
+
+     <div class="buttons">
+          <a class="button" href="{% url 'account_logout' %}">Odhlasit se</a>
+          <a class="button" href="{% url 'account_change_password' %}">Zmena hesla</a>
+     </div>
+
+{% endblock %}
+

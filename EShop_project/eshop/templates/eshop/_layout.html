@@ -34,9 +34,15 @@
 
                     <p class="menu-label">Značky</p>
                     <ul class="menu-list">
-                        {% for ZNACKA in ZNACKY %}
-                            <li><a {% if ZNACKA == znacka %}class="is-active"{% endif %} href="{{ ZNACKA.get_absolute_url }}">{{ ZNACKA.nazev }}</a></li>
-                        {% endfor %}
+                        <li>
+                            <ul>
+                                {% for ZNACKA in ZNACKY %}
+                                    <li><a {% if ZNACKA == znacka %}class="is-active"{% endif %} href="{{ ZNACKA.get_absolute_url }}">{{ ZNACKA.nazev }}</a></li>
+                                {% endfor %}
+                            </ul>
+
+                        </li>
+
                     </ul>
                 </aside>
 

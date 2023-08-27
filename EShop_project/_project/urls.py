@@ -22,6 +22,10 @@ MEDIA_PATHS = static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns = MEDIA_PATHS + [
     path('admin/', admin.site.urls), # -> /admin/...
-    path('__debug__/', include('debug_toolbar.urls')),
+    path('account/', include('allauth.urls')),
     path('', include('eshop.urls', namespace='eshop')), # /...
 ]
+
+
+if settings.DEBUG:
+    urlpatterns.insert(0, path('__debug__/', include('debug_toolbar.urls'))),
